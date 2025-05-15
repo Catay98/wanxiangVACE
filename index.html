@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tongyi Wanxiang VACE (Wan2.1) Open Source - Groundbreaking Video Editing AI</title>
+    <meta name="description" content="Explore the groundbreaking open-source VACE model from Alibaba Cloud's Tongyi Wanxiang. Discover how this unified AI model revolutionizes video editing with text-to-video, image-referenced generation, local editing, video extension, and more.">
+    <meta name="keywords" content="Tongyi Wanxiang, VACE, Wan2.1, Open Source, AI Video Editing, Video Generation, Multimodal Model, Alibaba Cloud, AI Video Creation, Generative AI">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F4FKDDJCCJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-F4FKDDJCCJ');
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f7fafc; /* Lighter gray background */
+        }
+        body[lang="zh-CN"] { /* Apply Noto Sans SC for Chinese */
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, #8B5CF6 0%, #C4B5FD 70%, #EDE9FE 100%);
+        }
+        .section-title {
+            border-left: 4px solid #8B5CF6; /* Purple accent */
+            padding-left: 0.75rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #5B21B6; /* Darker Purple */
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem; /* Slightly more rounded */
+            padding: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Softer shadow */
+            margin-bottom: 1.5rem;
+            border: 1px solid #E5E7EB; /* Light gray border for cards */
+        }
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #6D28D9; /* Purple for card titles */
+        }
+        .highlight {
+            color: #8B5CF6; /* Purple for highlighted text */
+            font-weight: 600;
+        }
+        .feature-list li {
+            position: relative;
+            padding-left: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #A78BFA; /* Lighter Purple checkmark */
+            font-weight: bold;
+        }
+        .link-button {
+            display: inline-block;
+            background-color: #8B5CF6; /* Purple button */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        .link-button:hover {
+            background-color: #7C3AED; /* Darker Purple on hover */
+        }
+        .link-button-secondary {
+            background-color: #A78BFA; /* Lighter Purple for secondary */
+        }
+        .link-button-secondary:hover {
+            background-color: #8B5CF6;
+        }
+        .model-version-tag {
+            display: inline-block;
+            background-color: #EDE9FE; /* Lightest Purple */
+            color: #6D28D9;    /* Dark Purple text */
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px; /* pill shape */
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .nav-link.active {
+            font-weight: 700;
+            color: #7C3AED; /* Purple for active nav link */
+        }
+        .footer-link {
+            color: #D1D5DB; /* Lighter gray for footer links */
+            text-decoration: none;
+        }
+        .footer-link:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+        .language-toggle-container {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 1001;
+        }
+        .language-toggle-btn {
+            background-color: #8B5CF6;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            border: none;
+            font-size: 0.875rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .language-toggle-btn:hover {
+            background-color: #7C3AED;
+        }
+        .main-header {
+             background-color: rgba(255, 255, 255, 0.9);
+             backdrop-filter: blur(10px);
+        }
+        @media (max-width: 768px) {
+            .main-nav ul {
+                background-color: white;
+                padding: 1rem;
+                border-radius: 0.5rem;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            }
+            .language-toggle-container {
+                top: 0.75rem;
+                right: 0.75rem;
+            }
+             .language-toggle-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-800 leading-relaxed">
+
+    <div class="language-toggle-container">
+        <button id="languageToggleBtn" class="language-toggle-btn">中文</button>
+    </div>
+
+    <header class="main-header shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div>
+                <h1 class="text-3xl font-bold text-purple-600">
+                    <span data-lang-key="headerVaceTitle">Tongyi Wanxiang</span> <span class="text-pink-500">VACE</span>
+                </h1>
+                <p class="text-sm text-gray-600" data-lang-key="headerVaceSubtitle">Announcing the Open Source Video Editing Powerhouse</p>
+            </div>
+            <button id="mobileNavToggle" class="md:hidden mobile-nav-toggle p-2 rounded-md text-gray-600 hover:text-purple-600 hover:bg-purple-100">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+            <nav class="main-nav hidden md:block">
+                <ul class="flex space-x-4 md:space-x-6">
+                    <li><a href="#latest-updates" class="nav-link text-gray-600 hover:text-purple-600 transition duration-300" data-lang-key="navLatestUpdates">Latest Updates</a></li>
+                    <li><a href="#core-features-vace" class="nav-link text-gray-600 hover:text-purple-600 transition duration-300" data-lang-key="navCoreFeatures">Core Features</a></li>
+                    <li><a href="#combined-capabilities" class="nav-link text-gray-600 hover:text-purple-600 transition duration-300" data-lang-key="navCombinedCapabilities">Combined Capabilities</a></li>
+                    <li><a href="#tech-deep-dive" class="nav-link text-gray-600 hover:text-purple-600 transition duration-300" data-lang-key="navTechDeepDive">Tech Deep Dive</a></li>
+                    <li><a href="#getting-started" class="nav-link text-gray-600 hover:text-purple-600 transition duration-300" data-lang-key="navGettingStarted">Get Started</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-bg text-white py-16 md:py-24 px-6" id="hero-section-for-nav">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4" data-lang-key="heroTitle">VACE (Wan2.1) by Tongyi Wanxiang: Open Source Now!</h2>
+            <p class="text-xl md:text-2xl mb-8" data-lang-key="heroSubtitle">One model to master diverse video editing tasks, revolutionizing creative workflows.</p>
+            <div class="space-x-4">
+                <a href="#getting-started" class="link-button text-lg" data-lang-key="heroCTA">Explore VACE &raquo;</a>
+            </div>
+        </div>
+    </section>
+
+    <main class="container mx-auto px-6 py-8 md:py-12">
+
+        <section id="latest-updates" class="mb-12 pt-16 -mt-16">
+            <h2 class="section-title" data-lang-key="sectionTitleLatestUpdates">Latest Updates on VACE Open Source</h2>
+
+            <article class="card bg-purple-50 border-purple-200">
+                <h3 data-lang-key="article1Title">Tongyi Wanxiang VACE (Wan2.1) Open Sourced: A Unified Model for Diverse Video Editing</h3>
+                <p><strong data-lang-key="article1Date">[May 15, 2025]</strong> <span data-lang-key="article1Intro">Alibaba Cloud's Tongyi Wanxiang team has officially open-sourced its groundbreaking VACE (Video Anymator and Composer Engine) model, a core component of the Wan2.1 series. VACE aims to provide a one-stop, efficient, and flexible video creation and editing experience by consolidating multiple complex tasks into a single, powerful model. This release includes VACE-1.3B supporting 480P resolution and VACE-14B supporting both 480P and 720P.</span></p>
+                <div class="meta"><span data-lang-key="article1MetaCategory">Category: Latest Updates, Model Release</span> | <a href="#tech-deep-dive" class="text-purple-500 hover:underline" data-lang-key="article1ReadMore">Learn More Technical Details &raquo;</a></div>
+                <div class="mt-2">
+                    <p><strong data-lang-key="timelineTitle">Key Milestones:</strong></p>
+                    <ul class="list-disc list-inside ml-4 text-sm text-gray-700">
+                        <li data-lang-key="timelineItem1"><strong>Wan2.1 Series Release:</strong> VACE unveiled as a core component, showcasing its unified video processing capabilities.</li>
+                        <li data-lang-key="timelineItem2"><strong>VACE 1.3B & 14B Models Open Sourced:</strong> Powerful models supporting different resolutions (480P/720P) released to the community.</li>
+                        <li data-lang-key="timelineItem3"><strong>Active Community Feedback & Exploration:</strong> Developers begin secondary creation, evaluation, and exploring VACE's application potential across various industries.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="card">
+                <h3 data-lang-key="article2Title">One Model, Multiple Tasks: How VACE Simplifies Complex Video Editing</h3>
+                <p><strong data-lang-key="article2Date">[May 15, 2025]</strong> <span data-lang-key="article2Content">With VACE, users can now seamlessly perform text-to-video generation, image-referenced generation, local video editing, and video duration/spatial extension tasks without frequently switching between different models or tools. This unified approach is set to significantly boost efficiency and flexibility in video content creation. Its innovative multimodal input system is a key highlight, capable of simultaneously accepting text, images, video clips, masks, and various control signals (like human pose, depth maps, etc.).</span></p>
+                <div class="meta"><span data-lang-key="article2MetaCategory">Category: Core Features, Workflow Optimization</span> | <span data-lang-key="article2Source">Source: Tongyi Wanxiang Official Announcement</span></div>
+            </article>
+        </section>
+
+        <section id="core-features-vace" class="mb-12 pt-16 -mt-16">
+            <h2 class="section-title" data-lang-key="sectionTitleVaceCore">VACE Core Features: Redefining Video Creation Boundaries</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card">
+                    <h3 data-lang-key="vaceFeature1Title">Powerful Controllable Inpainting & Generation</h3>
+                    <p data-lang-key="vaceFeature1Desc">Overcoming the pain point of difficult post-generation adjustments in traditional video creation. VACE supports highly controllable video content inpainting and generation based on human pose, motion optical flow, structure preservation, spatial motion paths, video recoloring, and more. It also supports video generation based on reference subject images and background images, ensuring visual element consistency.</p>
+                </div>
+                <div class="card">
+                    <h3 data-lang-key="vaceFeature2Title">Unified & Powerful Multimodal Input System</h3>
+                    <p data-lang-key="vaceFeature2Desc">Unlike traditional models that rely solely on text prompts, VACE has built a unified input system that integrates text, images (object reference images or video frames), videos (supporting regeneration after erasure or local extension), Masks (0/1 binary signals to specify editing areas), and various control signals (depth maps, optical flow, layout, grayscale images, line art, poses, etc.).</p>
+                </div>
+                <div class="card">
+                    <h3 data-lang-key="vaceFeature3Title">Precise Spatio-temporal Editing Capabilities</h3>
+                    <p data-lang-key="vaceFeature3Desc">VACE empowers users with powerful capabilities for fine-grained video content editing. In the time dimension, it can intelligently complete the entire video duration based on any video segment or just the first and last frames. In the spatial dimension, it supports extended generation for image edges or background areas, such as achieving background replacement—changing the video background environment according to a new Prompt while keeping the main subject animasi.</p>
+                </div>
+                 <div class="card">
+                    <h3 data-lang-key="vaceFeature4Title">Expert-Level Task Handling</h3>
+                    <p data-lang-key="vaceFeature4Desc">VACE easily handles complex functions that traditionally require multiple expert models, such as image-referenced generation, video inpainting, and local editing.</p>
+                </div>
+                <div class="card">
+                    <h3 data-lang-key="vaceFeature5Title">Free Combination of Atomic Abilities</h3>
+                    <p data-lang-key="vaceFeature5Desc">A revolutionary feature allowing the natural fusion of basic abilities like text-to-video, pose control, background replacement, without needing separate model training for each function.</p>
+                </div>
+                <div class="card">
+                    <h3 data-lang-key="vaceFeature6Title">Multiple Resolution Support</h3>
+                    <p data-lang-key="vaceFeature6Desc">The open-sourced VACE-1.3B supports 480P, while VACE-14B supports both 480P and 720P resolutions, catering to various video quality needs.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="combined-capabilities" class="mb-12 pt-16 -mt-16">
+            <div class="card">
+                <h2 class="section-title" data-lang-key="sectionTitleCombined">Unlocking Creativity: The Power of Combined Atomic Abilities</h2>
+                <p class="mb-4" data-lang-key="combinedIntro">One of VACE's most revolutionary features is its support for the free combination of various single-task capabilities, completely breaking the bottleneck of traditional expert models working in silos and facing collaboration difficulties. As a unified model, VACE can naturally fuse basic (atomic) abilities such as text-to-video generation, pose control, background replacement, and local editing, without the need to train new models separately for a single function. This flexible combination mechanism not only significantly simplifies the video creation workflow but also greatly expands the creative boundaries of AI video generation.</p>
+                <p class="mb-2 font-semibold" data-lang-key="combinedExamplesTitle">Examples of Combined Capabilities:</p>
+                <ul class="list-disc list-inside ml-4 space-y-2 mb-4">
+                    <li><strong class="text-purple-700" data-lang-key="combinedEx1">Object Replacement in Video:</strong> Combine "Image Reference" + "Subject Reshaping" features.</li>
+                    <li><strong class="text-purple-700" data-lang-key="combinedEx2">Dynamic Pose Control for Static Images:</strong> Combine "Motion Control" + "First Frame Reference" features.</li>
+                    <li><strong class="text-purple-700" data-lang-key="combinedEx3">Expanding a Portrait Image to a Landscape Video with Referenced Elements:</strong> Combine "Image Reference" + "First Frame Reference" + "Background Extension" + "Duration Extension" features.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="tech-deep-dive" class="mb-12 pt-16 -mt-16">
+            <h2 class="section-title" data-lang-key="sectionTitleTechDeepDive">Tech Deep Dive: The "Magic" Behind VACE</h2>
+            <div class="space-y-6">
+                <div class="card">
+                    <h3 data-lang-key="techVCUTitle">Core Foundation: Unified Input Paradigm – Video Condition Unit (VCU)</h3>
+                    <p data-lang-key="techVCUContent">To achieve flexible combination and efficient processing of multiple tasks, the VACE team, after in-depth analysis and summarization of the input forms of four common video tasks (text-to-video, image-to-video, video-to-video, local video-to-video), innovatively proposed a flexible and unified input paradigm: the Video Condition Unit (VCU). The core idea of VCU is to generalize and unify complex multimodal context inputs into three basic forms: Text, Frame Sequence, and Mask Sequence. This design not only unifies the input form for the four core video generation and editing tasks mentioned above, but more crucially, the frame sequences and Mask sequences within VCU can be mathematically overlaid and fused in their representation, creating the necessary conditions for the free combination and synergistic processing of multi-task capabilities later on.</p>
+                </div>
+
+                <div class="card">
+                    <h3 data-lang-key="techEncodingTitle">Key Step: Unified Encoding of Multimodal Inputs & DiT Integration</h3>
+                    <p data-lang-key="techEncodingContent">How to uniformly encode the diverse multimodal inputs within VCU (text, images, videos, Masks, various control signals, etc.) into token sequences that a Diffusion Transformer (DiT) model can efficiently process was a major technical hurdle for VACE. VACE's solution primarily involves the following steps: First, the Frame sequence in the VCU input undergoes conceptual decoupling, categorizing it into two types: one is the RGB pixel part that needs to be preserved verbatim in the generated result (invariant frame sequence), and the other is the content part that needs to be regenerated based on text prompts or other control signals (variable frame sequence). Next, these three types of inputs (variable frames, invariant frames, and Mask) are separately encoded into latent space. Specifically, variable and invariant frames are encoded via a VAE (Variational Autoencoder) into a latent space consistent with the DiT model's noise dimension, with 16 channels. Mask sequences, on the other hand, are mapped to a spatio-temporally consistent latent space feature with 64 channels through elaborate deformation and sampling operations. Finally, the latent space features of the Frame sequences and Mask sequences are effectively combined and then mapped via a set of trainable parameters into token sequences directly processable by the DiT model.</p>
+                </div>
+
+                <div class="card">
+                    <h3 data-lang-key="techTrainingTitle">Optimization Strategy: Efficient Context Adapter Fine-tuning</h3>
+                    <p data-lang-key="techTrainingContent">In selecting the training strategy, the VACE team compared two approaches: Full Fine-tuning and Context Adapter Fine-tuning. Experiments showed that while global fine-tuning (i.e., training all DiT model parameters) can achieve faster inference speeds; however, the context adapter fine-tuning scheme—whose core idea is to fix the parameters of the original base model (e.g., Wan2.1) and only selectively copy and train some of the original Transformer layers as additional adapters—demonstrated faster convergence. Furthermore, it effectively avoids the risk of the base model's core capabilities suffering from "catastrophic forgetting" or performance degradation during fine-tuning. Therefore, all VACE series models released open-source this time were trained using the context adapter fine-tuning method to ensure model stability and efficiency.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="performance" class="mb-12 pt-16 -mt-16">
+             <div class="card">
+                <h2 class="section-title" data-lang-key="sectionTitlePerformance">Performance Evaluation: Significant Improvements in Key Metrics, Outstanding Results</h2>
+                <p data-lang-key="performanceContent">Comprehensive quantitative evaluation results for the newly released VACE series models show that, compared to the previous 1.3B preview version, the new models have achieved significant and encouraging improvements across multiple key performance metrics, including the quality of generated video content, controllability of the generation process, and the finesse of editing results. This clearly marks another solid step forward for VACE in its journey towards becoming a more mature and powerful AI video editing and creation tool. (Specific evaluation data charts or comparative examples can be inserted here as appropriate).</p>
+             </div>
+        </section>
+
+        <section id="getting-started" class="mb-12 pt-16 -mt-16">
+            <div class="card bg-purple-50 border-purple-200">
+                <h2 class="section-title" data-lang-key="sectionTitleGettingStarted">Get Started Now: Experience and Develop with VACE</h2>
+                <p class="mb-4" data-lang-key="gettingStartedIntro">For developers intrigued by the VACE model and eager to experience it or undertake secondary development, you can easily embark on your VACE exploration and innovation journey by following these straightforward steps:</p>
+                <ol class="list-decimal list-inside ml-4 space-y-2 mb-6">
+                    <li data-lang-key="gettingStartedStep1">Visit the official <strong>GitHub</strong> repository: Download the core source code for Wan2.1.</li>
+                    <li data-lang-key="gettingStartedStep2">Obtain Model Weights: Go to the <strong>HuggingFace</strong> community or the domestic <strong>ModelScope (魔搭)</strong> platform to download the model weight files corresponding to your chosen VACE version.</li>
+                    <li data-lang-key="gettingStartedStep3">Stay Updated with Official Channels: Keep a close watch on the official Tongyi Wanxiang main website, as some user-friendly VACE features and online experience portals will soon be launched, providing you with more support.</li>
+                </ol>
+
+                <p class="mb-4 font-semibold" data-lang-key="relevantLinks">Direct Links to Core Relevant Resources:</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <a href="https://github.com/Wan-Video/Wan2.1" target="_blank" class="link-button flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                        GitHub
+                    </a>
+                    <a href="https://modelscope.cn/organization/Wan-AI" target="_blank" class="link-button flex items-center justify-center">
+                        <span class="mr-2 font-bold">魔</span> ModelScope
+                    </a>
+                    <a href="https://huggingface.co/Wan-AI" target="_blank" class="link-button flex items-center justify-center">
+                        <span class="mr-2 text-2xl">🤗</span> Hugging Face
+                    </a>
+                </div>
+                 <p class="mt-6 mb-2 font-semibold" data-lang-key="officialExperience">Official Tongyi Wanxiang Online Experience & Exploration Portals:</p>
+                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <a href="https://tongyi.aliyun.com/wanxiang/" target="_blank" class="link-button link-button-secondary flex items-center justify-center" data-lang-key="domesticPortal">Domestic Site (Alibaba Cloud Tongyi)</a>
+                    <a href="https://wan.video" target="_blank" class="link-button link-button-secondary flex items-center justify-center" data-lang-key="internationalPortal">International Site (Wan.Video Platform)</a>
+                 </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-purple-200 py-10 text-center">
+        <div class="container mx-auto">
+            <p>&copy; <span id="currentYear"></span> <span data-lang-key="footerCopyright">Tongyi Large Model Team. All Rights Reserved.</span></p>
+            <p class="text-sm mt-1" data-lang-key="footerDisclaimer">This document aims to provide open-source information about the Tongyi Wanxiang VACE model. For specific model usage, please strictly adhere to the officially released licensing agreements and usage guidelines to ensure compliance.</p>
+             <p class="text-sm text-purple-300 mt-2">
+                <a href="https://beian.miit.gov.cn/" target="_blank" class="footer-link hover:text-purple-100" data-lang-key="footerICP">渝ICP备2025053282号</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        const mobileNavToggle = document.getElementById('mobileNavToggle');
+        const mainNav = document.querySelector('.main-nav');
+        if (mobileNavToggle && mainNav) {
+            mobileNavToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('open');
+            });
+        }
+
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('main section, section.hero-bg');
+
+        function activateNavLink() {
+            let currentSectionId = 'hero-section-for-nav'; // Default to hero
+            const headerOffset = document.querySelector('header.main-header')?.offsetHeight || 70;
+
+            sections.forEach(section => {
+                const sectionId = section.getAttribute('id');
+                if (!sectionId) return; // Skip sections without ID
+
+                const sectionTop = section.offsetTop - headerOffset - 20;
+                if (window.pageYOffset >= sectionTop) {
+                    currentSectionId = sectionId;
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSectionId}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', activateNavLink);
+        document.addEventListener('DOMContentLoaded', () => {
+            applyTranslations();
+            activateNavLink();
+        });
+
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (mainNav && mainNav.classList.contains('open')) {
+                    mainNav.classList.remove('open');
+                }
+                const targetId = link.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerOffset = document.querySelector('header.main-header')?.offsetHeight || 70;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+                    }
+                }
+            });
+        });
+
+        const translations = {
+            "htmlLang": { "zh": "zh-CN", "en": "en" },
+            // Header
+            "headerVaceTitle": {"zh": "通义万相", "en": "Tongyi Wanxiang"},
+            "headerVaceSubtitle": {"zh": "宣布开源视频编辑利器", "en": "Announcing the Open Source Video Editing Powerhouse"},
+            // Hero
+            "heroTitle": { "zh": "通义万相 VACE (Wan2.1) 震撼开源！", "en": "VACE (Wan2.1) by Tongyi Wanxiang: Open Source Now!" },
+            "heroSubtitle": { "zh": "一款模型搞定多种复杂视频编辑任务，颠覆传统创作流程。", "en": "One model to master diverse video editing tasks, revolutionizing creative workflows." },
+            "heroCTA": { "zh": "探索VACE &raquo;", "en": "Explore VACE &raquo;" },
+            // Nav
+            "navLatestUpdates": { "zh": "最新动态", "en": "Latest Updates" },
+            "navCoreFeatures": { "zh": "核心特性", "en": "Core Features" },
+            "navCombinedCapabilities": { "zh": "组合能力", "en": "Combined Capabilities"},
+            "navTechDeepDive": { "zh": "技术探秘", "en": "Tech Deep Dive"},
+            "navGettingStarted": { "zh": "快速上手", "en": "Get Started"},
+            "navAnalysisInsights": { "zh": "分析解读", "en": "Analysis & Insights" },
+
+            // Latest Updates Section
+            "sectionTitleLatestUpdates": { "zh": "VACE 开源最新动态", "en": "Latest Updates on VACE Open Source" },
+            "article1Title": { "zh": "通义万相VACE (Wan2.1)开源：一款统一模型赋能多样化视频编辑", "en": "Tongyi Wanxiang VACE (Wan2.1) Open Sourced: A Unified Model for Diverse Video Editing" },
+            "article1Date": { "zh": "[2025年5月15日]", "en": "[May 15, 2025]" },
+            "article1Intro": { "zh": "阿里巴巴通义万相团队正式开源其里程碑式的VACE (视频创作与编辑引擎)模型，作为Wan2.1系列的核心组成部分。VACE致力于通过单一的强大模型，提供一站式、高效且灵活的视频创作与编辑解决方案，解决以往需要切换多种工具的痛点。本次开源包含支持480P分辨率的VACE-1.3B版本以及支持480P与720P的VACE-14B版本。", "en": "Alibaba Cloud's Tongyi Wanxiang team has officially open-sourced its groundbreaking VACE (Video Anymator and Composer Engine) model, a core component of the Wan2.1 series. VACE aims to provide a one-stop, efficient, and flexible video creation and editing experience by consolidating multiple complex tasks into a single, powerful model. This release includes VACE-1.3B supporting 480P resolution and VACE-14B supporting both 480P and 720P." },
+            "article1MetaCategory": { "zh": "分类：最新动态, 模型发布", "en": "Category: Latest Updates, Model Release" },
+            "article1ReadMore": { "zh": "了解更多技术细节 &raquo;", "en": "Learn More Technical Details &raquo;" },
+            "timelineTitle": { "zh": "关键里程碑:", "en": "Key Milestones:" },
+            "timelineItem1": { "zh": "<strong>Wan2.1系列发布:</strong> VACE作为核心组件一同亮相，展示其统一视频处理能力。", "en": "<strong>Wan2.1 Series Release:</strong> VACE unveiled as a core component, showcasing its unified video processing capabilities." },
+            "timelineItem2": { "zh": "<strong>VACE 1.3B & 14B 模型开源:</strong> 向社区提供支持不同分辨率（480P/720P）的强大模型。", "en": "<strong>VACE 1.3B & 14B Models Open Sourced:</strong> Powerful models supporting different resolutions (480P/720P) released to the community." },
+            "timelineItem3": { "zh": "<strong>社区积极反馈与探索:</strong> 开发者开始基于VACE进行二次创作、评估，并探索其在各行各业的应用潜力。", "en": "<strong>Active Community Feedback & Exploration:</strong> Developers begin secondary creation, evaluation, and exploring VACE's application potential across various industries." },
+
+            "article2Title": { "zh": "一个模型，多种任务：VACE如何简化复杂视频编辑", "en": "One Model, Multiple Tasks: How VACE Simplifies Complex Video Editing" },
+            "article2Date": { "zh": "[2025年5月15日]", "en": "[May 15, 2025]" },
+            "article2Content": { "zh": "借助VACE，用户现在可以无缝执行文生视频、图像参考生成、视频局部编辑以及视频时长与空间扩展等多种任务，无需在不同的模型或工具间频繁切换。这种统一的方法有望显著提升视频内容创作的效率和灵活性。其创新的多模态输入系统是核心亮点，能够同时接受文本、图像、视频片段、蒙版(Mask)以及多种控制信号（如人体姿态、深度图等）。", "en": "With VACE, users can now seamlessly perform text-to-video generation, image-referenced generation, local video editing, and video duration/spatial extension tasks without frequently switching between different models or tools. This unified approach is set to significantly boost efficiency and flexibility in video content creation. Its innovative multimodal input system is a key highlight, capable of simultaneously accepting text, images, video clips, masks, and various control signals (like human pose, depth maps, etc.)." },
+            "article2MetaCategory": { "zh": "分类：核心功能, 工作流程优化", "en": "Category: Core Features, Workflow Optimization" },
+            "article2Source": { "zh": "来源: 通义万相官方公告", "en": "Source: Tongyi Wanxiang Official Announcement" },
+             "article2Published": { "zh": "发布于: 3小时前", "en": "Published: 3 hours ago" },
+
+            // Core Features Section
+            "sectionTitleVaceCore": { "zh": "VACE 核心特性：重塑视频创作边界", "en": "VACE Core Features: Redefining Video Creation Boundaries" },
+            "vaceFeature1Title": { "zh": "强大的可控重绘与生成", "en": "Powerful Controllable Inpainting & Generation" },
+            "vaceFeature1Desc": { "zh": "颠覆传统视频生成后调整困难的痛点。VACE支持基于人体姿态、运动光流、结构保持、空间运动轨迹、视频重新着色等多种方式进行高度可控的视频内容重绘与生成。同时，也支持基于参考主体图像和背景图像的视频生成，确保视觉元素的一致性。", "en": "Overcoming the pain point of difficult post-generation adjustments in traditional video creation. VACE supports highly controllable video content inpainting and generation based on human pose, motion optical flow, structure preservation, spatial motion paths, video recoloring, and more. It also supports video generation based on reference subject images and background images, ensuring visual element consistency." },
+            "vaceFeature2Title": { "zh": "统一且强大的多模态输入系统", "en": "Unified & Powerful Multimodal Input System" },
+            "vaceFeature2Desc": { "zh": "与仅依赖文本提示的传统模型不同，VACE构建了一个集文本、图像（物体参考图或视频帧）、视频（支持抹除、局部扩展后重生成）、Mask（0/1二值信号指定编辑区域）以及多种控制信号（深度图、光流、布局、灰度图、线稿、姿态等）于一体的统一输入系统。", "en": "Unlike traditional models that rely solely on text prompts, VACE has built a unified input system that integrates text, images (object reference images or video frames), videos (supporting regeneration after erasure or local extension), Masks (0/1 binary signals to specify editing areas), and various control signals (depth maps, optical flow, layout, grayscale images, line art, poses, etc.)." },
+            "vaceFeature3Title": { "zh": "精准的时空维度编辑能力", "en": "Precise Spatio-temporal Editing Capabilities" },
+            "vaceFeature3Desc": { "zh": "VACE赋予用户对视频内容进行精细化编辑的强大能力。在时间维度上，可根据任意视频片段或仅首尾帧智能补全整个视频时长；在空间维度上，支持对画面边缘或背景区域进行扩展生成，例如实现背景替换——在保留主体不变的前提下，依据新的Prompt更换视频背景环境。", "en": "VACE empowers users with powerful capabilities for fine-grained video content editing. In the time dimension, it can intelligently complete the entire video duration based on any video segment or just the first and last frames. In the spatial dimension, it supports extended generation for image edges or background areas, such as achieving background replacement—changing the video background environment according to a new Prompt while keeping the main subject animasi." },
+            "vaceFeature4Title": { "zh": "驾驭专家级任务", "en": "Expert-Level Task Handling" },
+            "vaceFeature4Desc": { "zh": "VACE能轻松胜任传统需多个专家模型协作完成的复杂功能，如图像参考生成、视频重绘、局部编辑等。", "en": "VACE easily handles complex functions that traditionally require multiple expert models, such as image-referenced generation, video inpainting, and local editing." },
+            "vaceFeature5Title": { "zh": "原子能力的自由组合", "en": "Free Combination of Atomic Abilities" },
+            "vaceFeature5Desc": { "zh": "革命性特性，允许自然融合文生视频、姿态控制、背景替换等基础能力，无需为单一功能单独训练新模型。", "en": "A revolutionary feature allowing the natural fusion of basic abilities like text-to-video, pose control, background replacement, without needing separate model training for each function." },
+            "vaceFeature6Title": { "zh": "多分辨率支持", "en": "Multiple Resolution Support" },
+            "vaceFeature6Desc": { "zh": "开源的VACE-1.3B支持480P，VACE-14B则同时支持480P和720P分辨率，满足不同场景对视频质量的需求。", "en": "The open-sourced VACE-1.3B supports 480P, while VACE-14B supports both 480P and 720P resolutions, catering to various video quality needs." },
+
+            // Combined Capabilities Section
+            "sectionTitleCombined": { "zh": "释放创意：原子能力的自由组合威力", "en": "Unlocking Creativity: The Power of Combined Atomic Abilities" },
+            "combinedIntro": { "zh": "VACE最具革命性的特点之一是其支持多种单任务能力的自由组合，彻底打破了传统专家模型各自为战、协作困难的瓶颈。作为一个统一的模型，VACE能够自然地融合文本生成视频、姿态控制、背景替换、局部编辑等基础（原子）能力，无需为实现某一单一功能而单独训练新模型。这种灵活的组合机制，不仅大幅简化了视频创作流程，也极大地拓展了AI视频生成的创意边界。", "en": "One of VACE's most revolutionary features is its support for the free combination of various single-task capabilities, completely breaking the bottleneck of traditional expert models working in silos and facing collaboration difficulties. As a unified model, VACE can naturally fuse basic (atomic) abilities such as text-to-video generation, pose control, background replacement, and local editing, without the need to train new models separately for a single function. This flexible combination mechanism not only significantly simplifies the video creation workflow but also greatly expands the creative boundaries of AI video generation." },
+            "combinedExamplesTitle": { "zh": "组合能力示例：", "en": "Examples of Combined Capabilities:" },
+            "combinedEx1": { "zh": "<strong>视频中物体替换：</strong> 组合“图片参考” + “主体重塑”功能。", "en": "<strong>Object Replacement in Video:</strong> Combine \"Image Reference\" + \"Subject Reshaping\" features." },
+            "combinedEx2": { "zh": "<strong>静态图片动态姿态控制：</strong> 组合“运动控制” + “首帧参考”功能。", "en": "<strong>Dynamic Pose Control for Static Images:</strong> Combine \"Motion Control\" + \"First Frame Reference\" features." },
+            "combinedEx3": { "zh": "<strong>竖版图拓展为横版视频并加入参考元素：</strong> 组合“图片参考” + “首帧参考” + “背景扩展” + “时长延展”功能。", "en": "<strong>Expanding a Portrait Image to a Landscape Video with Referenced Elements:</strong> Combine \"Image Reference\" + \"First Frame Reference\" + \"Background Extension\" + \"Duration Extension\" features." },
+
+            // Tech Deep Dive Section
+            "sectionTitleTechDeepDive": { "zh": "技术探秘：VACE 背后的“魔法”", "en": "Tech Deep Dive: The \"Magic\" Behind VACE" },
+            "techVCUTitle": { "zh": "核心基石：统一输入范式——视频条件单元 (VCU)", "en": "Core Foundation: Unified Input Paradigm – Video Condition Unit (VCU)" },
+            "techVCUContent": { "zh": "为了实现多任务的灵活组合和高效处理，VACE团队在对四类常见视频任务（文生视频、图生视频、视频生视频、局部视频生视频）的输入形态进行深入分析和总结后，创新性地提出了一个灵活且统一的输入范式：视频条件单元（Video Condition Unit, VCU）。VCU的核心思想是将复杂的多模态上下文输入，归纳并统一为三种基本形态：文本（Text）、帧序列（Frame Sequence）、以及Mask序列（Mask Sequence）。这种设计不仅在输入形式上统一了上述四类核心的视频生成与编辑任务，更为关键的是，VCU中的帧序列和Mask序列在数学表征上可以相互叠加和融合，为后续多任务能力的自由组合与协同处理创造了必要条件。", "en": "To achieve flexible combination and efficient processing of multiple tasks, the VACE team, after in-depth analysis and summarization of the input forms of four common video tasks (text-to-video, image-to-video, video-to-video, local video-to-video), innovatively proposed a flexible and unified input paradigm: the Video Condition Unit (VCU). The core idea of VCU is to generalize and unify complex multimodal context inputs into three basic forms: Text, Frame Sequence, and Mask Sequence. This design not only unifies the input form for the four core video generation and editing tasks mentioned above, but more crucially, the frame sequences and Mask sequences within VCU can be mathematically overlaid and fused in their representation, creating the necessary conditions for the free combination and synergistic processing of multi-task capabilities later on." },
+            "techEncodingTitle": { "zh": "关键环节：多模态输入的统一编码与DiT整合", "en": "Key Step: Unified Encoding of Multimodal Inputs & DiT Integration" },
+            "techEncodingContent": { "zh": "如何将VCU中多样的多模态输入（文本、图像、视频、Mask、各类控制信号等）统一编码为扩散Transformer（DiT）模型能够高效处理的token序列，是VACE需要攻克的一大技术难题。VACE的解决方案主要包含以下步骤：首先，对VCU输入中的Frame序列进行概念解耦，将其细分为两类：一类是需要在生成结果中原封不动保留的RGB像素部分（不变帧序列），另一类是需要根据文本提示或其他控制信号重新生成的内容部分（可变帧序列）。接下来，分别对这三类输入（可变帧、不变帧、Mask）进行隐空间编码。其中，可变帧和不变帧通过VAE（Variational Autoencoder）被编码到与DiT模型噪声维度一致的隐空间，通道数为16；而Mask序列则通过精巧的变形（deformation）和采样（sampling）操作，被映射到时空维度一致、通道数为64的隐空间特征。最后，将Frame序列和Mask序列的隐空间特征进行有效合并，并通过一组可训练的参数将其映射为DiT模型可直接处理的token序列。", "en": "How to uniformly encode the diverse multimodal inputs within VCU (text, images, videos, Masks, various control signals, etc.) into token sequences that a Diffusion Transformer (DiT) model can efficiently process was a major technical hurdle for VACE. VACE's solution primarily involves the following steps: First, the Frame sequence in the VCU input undergoes conceptual decoupling, categorizing it into two types: one is the RGB pixel part that needs to be preserved verbatim in the generated result (invariant frame sequence), and the other is the content part that needs to be regenerated based on text prompts or other control signals (variable frame sequence). Next, these three types of inputs (variable frames, invariant frames, and Mask) are separately encoded into latent space. Specifically, variable and invariant frames are encoded via a VAE (Variational Autoencoder) into a latent space consistent with the DiT model's noise dimension, with 16 channels. Mask sequences, on the other hand, are mapped to a spatio-temporally consistent latent space feature with 64 channels through elaborate deformation and sampling operations. Finally, the latent space features of the Frame sequences and Mask sequences are effectively combined and then mapped via a set of trainable parameters into token sequences directly processable by the DiT model." },
+            "techTrainingTitle": { "zh": "优化策略：高效的上下文适配器微调训练", "en": "Optimization Strategy: Efficient Context Adapter Fine-tuning" },
+            "techTrainingContent": { "zh": "在训练策略的选择上，VACE团队对比了全局微调（Full Fine-tuning）与上下文适配器微调（Context Adapter Fine-tuning）两种方案。实验表明，虽然全局微调（即训练全部DiT模型参数）能够取得更快的推理速度，但上下文适配器微调方案——其核心思想是固定原始基模型（如Wan2.1）的参数，仅选择性地复制并训练一部分原始Transformer层作为额外的适配器——展现出了更快的收敛速度，并且能有效避免基础模型的核心能力在微调过程中发生“灾难性遗忘”或性能衰退的风险。因此，本次开源发布的VACE系列模型均采用了上下文适配器微调方法进行训练，以确保模型的稳定性和高效性。", "en": "In selecting the training strategy, the VACE team compared two approaches: Full Fine-tuning and Context Adapter Fine-tuning. Experiments showed that while global fine-tuning (i.e., training all DiT model parameters) can achieve faster inference speeds; however, the context adapter fine-tuning scheme—whose core idea is to fix the parameters of the original base model (e.g., Wan2.1) and only selectively copy and train some of the original Transformer layers as additional adapters—demonstrated faster convergence. Furthermore, it effectively avoids the risk of the base model's core capabilities suffering from "catastrophic forgetting" or performance degradation during fine-tuning. Therefore, all VACE series models released open-source this time were trained using the context adapter fine-tuning method to ensure model stability and efficiency." },
+
+            // Performance Section
+            "sectionTitlePerformance": { "zh": "性能评估：关键指标显著提升，效果卓越", "en": "Performance Evaluation: Significant Improvements in Key Metrics, Outstanding Results" },
+            "performanceContent": { "zh": "通过对本次发布的VACE系列模型进行的全面定量评测结果显示，相较于此前的1.3B preview版本，新模型在视频生成内容的质量、生成过程的可控性以及编辑结果的精细度等多个关键性能指标上均取得了显著且令人鼓舞的提升。这清晰地标志着VACE在向一个更为成熟、功能更为强大的AI视频编辑与创作工具迈进的过程中，又取得了坚实的一大步。（此处可根据实际情况，插入具体的评测数据图表或对比案例进行展示）", "en": "Comprehensive quantitative evaluation results for the newly released VACE series models show that, compared to the previous 1.3B preview version, the new models have achieved significant and encouraging improvements across multiple key performance metrics, including the quality of generated video content, controllability of the generation process, and the finesse of editing results. This clearly marks another solid step forward for VACE in its journey towards becoming a more mature and powerful AI video editing and creation tool. (Specific evaluation data charts or comparative examples can be inserted here as appropriate)." },
+
+            // Getting Started Section
+            "sectionTitleGettingStarted": { "zh": "即刻上手：体验与二次开发VACE", "en": "Get Started Now: Experience and Develop with VACE" },
+            "gettingStartedIntro": { "zh": "对VACE模型充满兴趣并希望立即体验或进行二次开发的开发者们，可以遵循以下简洁明了的步骤，轻松开启您的VACE探索与创新之旅：", "en": "For developers intrigued by the VACE model and eager to experience it or undertake secondary development, you can easily embark on your VACE exploration and innovation journey by following these straightforward steps:" },
+            "gettingStartedStep1": { "zh": "访问官方 <strong>GitHub</strong> 代码仓库：下载 Wan2.1 的核心源代码。", "en": "Visit the official <strong>GitHub</strong> repository: Download the core source code for Wan2.1." },
+            "gettingStartedStep2": { "zh": "获取模型权重：前往 <strong>HuggingFace</strong> 社区或国内的 <strong>ModelScope (魔搭)</strong> 平台，下载与您选择的VACE版本相对应的模型权重文件。", "en": "Obtain Model Weights: Go to the <strong>HuggingFace</strong> community or the domestic <strong>ModelScope (魔搭)</strong> platform to download the model weight files corresponding to your chosen VACE version." },
+            "gettingStartedStep3": { "zh": "关注官方动态：密切关注通义万相的官方主站，部分VACE的便捷功能与在线体验入口也即将上线，为您提供更多支持。", "en": "Stay Updated with Official Channels: Keep a close watch on the official Tongyi Wanxiang main website, as some user-friendly VACE features and online experience portals will soon be launched, providing you with more support." },
+            "relevantLinks": { "zh": "相关核心资源链接直达：", "en": "Direct Links to Core Relevant Resources:" },
+            "officialExperience": { "zh": "通义万相官方在线体验与探索入口：", "en": "Official Tongyi Wanxiang Online Experience & Exploration Portals:" },
+            "domesticPortal": { "zh": "国内站 (阿里云通义)", "en": "Domestic Site (Alibaba Cloud Tongyi)" },
+            "internationalPortal": { "zh": "国际站 (Wan.Video Platform)", "en": "International Site (Wan.Video Platform)" },
+
+            // Footer
+            "footerCopyright": { "zh": "通义大模型团队. 版权所有.", "en": "Tongyi Large Model Team. All Rights Reserved." },
+            "footerDisclaimer": { "zh": "本文档旨在提供关于通义万相VACE模型的开源信息。具体模型使用请严格遵循官方发布的许可协议和使用指南，确保合规。", "en": "This document aims to provide open-source information about the Tongyi Wanxiang VACE model. For specific model usage, please strictly adhere to the officially released licensing agreements and usage guidelines to ensure compliance." },
+            "footerICP": { "zh": "渝ICP备2025053282号", "en": "Yu ICP Bei 2025053282" }
+        };
+
+        let currentLanguage = 'en'; // Default language
+        const languageToggleBtn = document.getElementById('languageToggleBtn');
+        const htmlEl = document.documentElement;
+
+        function applyTranslations() {
+            htmlEl.lang = translations.htmlLang[currentLanguage];
+            if (currentLanguage === 'zh') {
+                document.body.setAttribute('lang', 'zh-CN');
+            } else {
+                document.body.removeAttribute('lang');
+            }
+
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                if (translations[key] && translations[key][currentLanguage]) {
+                    element.innerHTML = translations[key][currentLanguage];
+                }
+            });
+            languageToggleBtn.textContent = currentLanguage === 'zh' ? 'English' : '中文';
+            activateNavLink();
+        }
+
+        languageToggleBtn.addEventListener('click', () => {
+            currentLanguage = currentLanguage === 'zh' ? 'en' : 'zh';
+            applyTranslations();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            applyTranslations();
+            activateNavLink();
+        });
+    </script>
+
+</body>
+</html>
