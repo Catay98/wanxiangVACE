@@ -367,8 +367,8 @@
         }
         window.addEventListener('scroll', activateNavLink);
         document.addEventListener('DOMContentLoaded', () => {
-            applyTranslations();
-            activateNavLink();
+            applyTranslations(); // Apply translations first
+            activateNavLink(); // Then activate nav link based on current scroll/default
         });
 
 
@@ -398,10 +398,10 @@
         const translations = {
             "htmlLang": { "zh": "zh-CN", "en": "en" },
             // Header
-            "headerVaceTitle": {"zh": "通义万相", "en": "Tongyi Wanxiang"},
+            "headerVaceTitle": {"zh": "通义万象", "en": "Tongyi Wanxiang"}, // Corrected
             "headerVaceSubtitle": {"zh": "宣布开源视频编辑利器", "en": "Announcing the Open Source Video Editing Powerhouse"},
             // Hero
-            "heroTitle": { "zh": "通义万相 VACE (Wan2.1) 震撼开源！", "en": "VACE (Wan2.1) by Tongyi Wanxiang: Open Source Now!" },
+            "heroTitle": { "zh": "通义万象 VACE (Wan2.1) 震撼开源！", "en": "VACE (Wan2.1) by Tongyi Wanxiang: Open Source Now!" }, // Corrected
             "heroSubtitle": { "zh": "一款模型搞定多种复杂视频编辑任务，颠覆传统创作流程。", "en": "One model to master diverse video editing tasks, revolutionizing creative workflows." },
             "heroCTA": { "zh": "探索VACE &raquo;", "en": "Explore VACE &raquo;" },
             // Nav
@@ -410,13 +410,13 @@
             "navCombinedCapabilities": { "zh": "组合能力", "en": "Combined Capabilities"},
             "navTechDeepDive": { "zh": "技术探秘", "en": "Tech Deep Dive"},
             "navGettingStarted": { "zh": "快速上手", "en": "Get Started"},
-            "navAnalysisInsights": { "zh": "分析解读", "en": "Analysis & Insights" },
+            "navAnalysisInsights": { "zh": "分析解读", "en": "Analysis & Insights" }, // Kept for structure, can be removed if not used
 
             // Latest Updates Section
             "sectionTitleLatestUpdates": { "zh": "VACE 开源最新动态", "en": "Latest Updates on VACE Open Source" },
-            "article1Title": { "zh": "通义万相VACE (Wan2.1)开源：一款统一模型赋能多样化视频编辑", "en": "Tongyi Wanxiang VACE (Wan2.1) Open Sourced: A Unified Model for Diverse Video Editing" },
+            "article1Title": { "zh": "通义万象VACE (Wan2.1)开源：一款统一模型赋能多样化视频编辑", "en": "Tongyi Wanxiang VACE (Wan2.1) Open Sourced: A Unified Model for Diverse Video Editing" }, // Corrected
             "article1Date": { "zh": "[2025年5月15日]", "en": "[May 15, 2025]" },
-            "article1Intro": { "zh": "阿里巴巴通义万相团队正式开源其里程碑式的VACE (视频创作与编辑引擎)模型，作为Wan2.1系列的核心组成部分。VACE致力于通过单一的强大模型，提供一站式、高效且灵活的视频创作与编辑解决方案，解决以往需要切换多种工具的痛点。本次开源包含支持480P分辨率的VACE-1.3B版本以及支持480P与720P的VACE-14B版本。", "en": "Alibaba Cloud's Tongyi Wanxiang team has officially open-sourced its groundbreaking VACE (Video Anymator and Composer Engine) model, a core component of the Wan2.1 series. VACE aims to provide a one-stop, efficient, and flexible video creation and editing experience by consolidating multiple complex tasks into a single, powerful model. This release includes VACE-1.3B supporting 480P resolution and VACE-14B supporting both 480P and 720P." },
+            "article1Intro": { "zh": "阿里巴巴通义万象团队正式开源其里程碑式的VACE (视频创作与编辑引擎)模型，作为Wan2.1系列的核心组成部分。VACE致力于通过单一的强大模型，提供一站式、高效且灵活的视频创作与编辑解决方案，解决以往需要切换多种工具的痛点。本次开源包含支持480P分辨率的VACE-1.3B版本以及支持480P与720P的VACE-14B版本。", "en": "Alibaba Cloud's Tongyi Wanxiang team has officially open-sourced its groundbreaking VACE (Video Anymator and Composer Engine) model, a core component of the Wan2.1 series. VACE aims to provide a one-stop, efficient, and flexible video creation and editing experience by consolidating multiple complex tasks into a single, powerful model. This release includes VACE-1.3B supporting 480P resolution and VACE-14B supporting both 480P and 720P." }, // Corrected
             "article1MetaCategory": { "zh": "分类：最新动态, 模型发布", "en": "Category: Latest Updates, Model Release" },
             "article1ReadMore": { "zh": "了解更多技术细节 &raquo;", "en": "Learn More Technical Details &raquo;" },
             "timelineTitle": { "zh": "关键里程碑:", "en": "Key Milestones:" },
@@ -428,7 +428,7 @@
             "article2Date": { "zh": "[2025年5月15日]", "en": "[May 15, 2025]" },
             "article2Content": { "zh": "借助VACE，用户现在可以无缝执行文生视频、图像参考生成、视频局部编辑以及视频时长与空间扩展等多种任务，无需在不同的模型或工具间频繁切换。这种统一的方法有望显著提升视频内容创作的效率和灵活性。其创新的多模态输入系统是核心亮点，能够同时接受文本、图像、视频片段、蒙版(Mask)以及多种控制信号（如人体姿态、深度图等）。", "en": "With VACE, users can now seamlessly perform text-to-video generation, image-referenced generation, local video editing, and video duration/spatial extension tasks without frequently switching between different models or tools. This unified approach is set to significantly boost efficiency and flexibility in video content creation. Its innovative multimodal input system is a key highlight, capable of simultaneously accepting text, images, video clips, masks, and various control signals (like human pose, depth maps, etc.)." },
             "article2MetaCategory": { "zh": "分类：核心功能, 工作流程优化", "en": "Category: Core Features, Workflow Optimization" },
-            "article2Source": { "zh": "来源: 通义万相官方公告", "en": "Source: Tongyi Wanxiang Official Announcement" },
+            "article2Source": { "zh": "来源: 通义万象官方公告", "en": "Source: Tongyi Wanxiang Official Announcement" }, // Corrected
              "article2Published": { "zh": "发布于: 3小时前", "en": "Published: 3 hours ago" },
 
             // Core Features Section
@@ -472,15 +472,15 @@
             "gettingStartedIntro": { "zh": "对VACE模型充满兴趣并希望立即体验或进行二次开发的开发者们，可以遵循以下简洁明了的步骤，轻松开启您的VACE探索与创新之旅：", "en": "For developers intrigued by the VACE model and eager to experience it or undertake secondary development, you can easily embark on your VACE exploration and innovation journey by following these straightforward steps:" },
             "gettingStartedStep1": { "zh": "访问官方 <strong>GitHub</strong> 代码仓库：下载 Wan2.1 的核心源代码。", "en": "Visit the official <strong>GitHub</strong> repository: Download the core source code for Wan2.1." },
             "gettingStartedStep2": { "zh": "获取模型权重：前往 <strong>HuggingFace</strong> 社区或国内的 <strong>ModelScope (魔搭)</strong> 平台，下载与您选择的VACE版本相对应的模型权重文件。", "en": "Obtain Model Weights: Go to the <strong>HuggingFace</strong> community or the domestic <strong>ModelScope (魔搭)</strong> platform to download the model weight files corresponding to your chosen VACE version." },
-            "gettingStartedStep3": { "zh": "关注官方动态：密切关注通义万相的官方主站，部分VACE的便捷功能与在线体验入口也即将上线，为您提供更多支持。", "en": "Stay Updated with Official Channels: Keep a close watch on the official Tongyi Wanxiang main website, as some user-friendly VACE features and online experience portals will soon be launched, providing you with more support." },
+            "gettingStartedStep3": { "zh": "关注官方动态：密切关注通义万象的官方主站，部分VACE的便捷功能与在线体验入口也即将上线，为您提供更多支持。", "en": "Stay Updated with Official Channels: Keep a close watch on the official Tongyi Wanxiang main website, as some user-friendly VACE features and online experience portals will soon be launched, providing you with more support." }, // Corrected
             "relevantLinks": { "zh": "相关核心资源链接直达：", "en": "Direct Links to Core Relevant Resources:" },
-            "officialExperience": { "zh": "通义万相官方在线体验与探索入口：", "en": "Official Tongyi Wanxiang Online Experience & Exploration Portals:" },
-            "domesticPortal": { "zh": "国内站 (阿里云通义)", "en": "Domestic Site (Alibaba Cloud Tongyi)" },
+            "officialExperience": { "zh": "通义万象官方在线体验与探索入口：", "en": "Official Tongyi Wanxiang Online Experience & Exploration Portals:" }, // Corrected
+            "domesticPortal": { "zh": "国内站 (阿里云通义万象)", "en": "Domestic Site (Alibaba Cloud Tongyi Wanxiang)" }, // Corrected
             "internationalPortal": { "zh": "国际站 (Wan.Video Platform)", "en": "International Site (Wan.Video Platform)" },
 
             // Footer
-            "footerCopyright": { "zh": "通义大模型团队. 版权所有.", "en": "Tongyi Large Model Team. All Rights Reserved." },
-            "footerDisclaimer": { "zh": "本文档旨在提供关于通义万相VACE模型的开源信息。具体模型使用请严格遵循官方发布的许可协议和使用指南，确保合规。", "en": "This document aims to provide open-source information about the Tongyi Wanxiang VACE model. For specific model usage, please strictly adhere to the officially released licensing agreements and usage guidelines to ensure compliance." },
+            "footerCopyright": { "zh": "通义大模型团队. 版权所有.", "en": "Tongyi Large Model Team. All Rights Reserved." }, // Corrected
+            "footerDisclaimer": { "zh": "本文档旨在提供关于通义万象VACE模型的开源信息。具体模型使用请严格遵循官方发布的许可协议和使用指南，确保合规。", "en": "This document aims to provide open-source information about the Tongyi Wanxiang VACE model. For specific model usage, please strictly adhere to the officially released licensing agreements and usage guidelines to ensure compliance." }, // Corrected
             "footerICP": { "zh": "渝ICP备2025053282号", "en": "Yu ICP Bei 2025053282" }
         };
 
@@ -511,9 +511,10 @@
             applyTranslations();
         });
 
+        // Initialize translations on page load
         document.addEventListener('DOMContentLoaded', () => {
             applyTranslations();
-            activateNavLink();
+            activateNavLink(); // Then activate nav link based on current scroll/default
         });
     </script>
 
